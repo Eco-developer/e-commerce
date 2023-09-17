@@ -1,10 +1,9 @@
 import { 
-    Input,
     Grid,
     InputLabel,
     FormControl,
     FormHelperText,
-    OutlinedInput
+    OutlinedInput,
 } from "@mui/material";
 import { InputStandardProps } from "@/interfaces";
 
@@ -33,7 +32,6 @@ export const InputStandard: React.FC<InputStandardProps> = ({
     type="text",
     value,
     margin="none",
-    notched=false
 }) => {
     return (
         <Grid 
@@ -45,11 +43,15 @@ export const InputStandard: React.FC<InputStandardProps> = ({
             xl={xl}
             zeroMinWidth={gridItemZeroMinWidth}
         >
-            <FormControl >
-                <InputLabel id={id}>
+            <FormControl fullWidth>
+                <InputLabel
+                    htmlFor={id}
+                    variant="outlined"
+                >
                     {labelText}
                 </InputLabel>
                 <OutlinedInput
+                    label={labelText}
                     id={id}
                     name={name}
                     onChange={onChange}
@@ -67,7 +69,6 @@ export const InputStandard: React.FC<InputStandardProps> = ({
                     type={type}
                     value={value}
                     margin={margin}
-                    notched={notched}
                 />
                 {error.status ?
                     (

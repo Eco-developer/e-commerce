@@ -1,4 +1,7 @@
-import { ChangeEventHandler, ReactNode } from "react";
+import { 
+    ChangeEventHandler, 
+    ReactNode 
+} from "react";
 
 export type InputStandardProps = {
     xs?: 'auto' | number | boolean,
@@ -28,5 +31,4 @@ export type InputStandardProps = {
     type?: string,
     value: any,
     margin?: "none" | "dense",
-    notched?: boolean,
 }
