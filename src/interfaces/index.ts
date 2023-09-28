@@ -9,6 +9,10 @@ import {
     validators, 
     errors,
 } from "./useFormTypes";
+import { 
+    requestParameters,
+    alertState,
+} from "./useRequestTypes";
 
 export type {
     InputStandardProps,
@@ -20,4 +24,6 @@ export type {
     valuesState,
     validators, 
     errors,
+    requestParameters,
+    alertState,
 }
