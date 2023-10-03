@@ -17,10 +17,10 @@ export const useRequest = () => {
     const handleRequest = useCallback(async ({
         method="GET",
         data={},
-        endpoint="",
+        endpoint,
         params="",
-        succesAlert,
-        subresource,
+        succesAlert=false,
+        subresource="",
     }: requestParameters) => {
         try {
             const response = await axios({
