@@ -10,7 +10,7 @@ import {
     errors,
 } from "@/interfaces";
 
-export const useForm = (inputs:inputsArray, initialState: valuesState, validators: validators) => {
+export const useForm = (inputs:inputsArray, initialState: valuesState, validators: validators={}) => {
     const [updatedInputs, setInputs] = useState<inputsArray>(inputs);
     const [values, setValues] = useState<valuesState>(initialState);
     const [errors, setErrors] = useState<errors>({});
@@ -22,7 +22,7 @@ export const useForm = (inputs:inputsArray, initialState: valuesState, validator
                     ...prevState,
                     [name]: {
                         status: !validators[name][key].validate(value, values),
-                        message: typeof validators[name][key].message === 'string' ? validators[name][key].message : validators[name][key].message(value, values)
+                        message: validators[name][key].message,
                     }
                 }))
                 return !validators[name][key].validate(value, values);
@@ -70,7 +70,7 @@ export const useForm = (inputs:inputsArray, initialState: valuesState, validator
 
     const getFormErrorStatus = useCallback((values: valuesState) => {
         return Object.keys(validators).some((name: string) => {
-            return Object.keys(values).some((key: string) => {
+            return Object.keys(validators[name]).some((key: string) => {
                 return !validators[name][key].validate(values[name], values);
             })
         })

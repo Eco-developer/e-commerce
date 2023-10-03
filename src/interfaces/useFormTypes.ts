@@ -10,7 +10,7 @@ export type validators = {
     [key : string]: {
         [key : string]: {
             validate: (value:any, values: valuesState) => boolean,
-            message: string & ((value:any, values: valuesState) => string)
+            message: string,
         }
     }
 }
