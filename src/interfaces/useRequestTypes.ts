@@ -1,3 +1,5 @@
+import { AlertColor } from "@mui/material"
+
 export type requestParameters = {
     method?: string,
     data?: {
@@ -10,7 +12,7 @@ export type requestParameters = {
 }
 
 export type alertState = {
-    severity?: string,
+    severity?: AlertColor,
     open: boolean,
     message?: string
 }

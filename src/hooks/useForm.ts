@@ -1,17 +1,19 @@
 import { 
     useCallback, 
     useState, 
-    ChangeEvent, 
+    ChangeEvent,
+    ReactNode, 
 } from "react"
 import {    
-    inputsArray,
     valuesState,
     validators, 
     errors,
+    inputProps,
 } from "@/interfaces";
+import { SelectChangeEvent } from "@mui/material";
 
-export const useForm = (inputs:inputsArray, initialState: valuesState, validators: validators={}) => {
-    const [updatedInputs, setInputs] = useState<inputsArray>(inputs);
+export const useForm = (inputs:inputProps[], initialState: valuesState, validators: validators={}) => {
+    const [updatedInputs, setInputs] = useState<inputProps[]>(inputs);
     const [values, setValues] = useState<valuesState>(initialState);
     const [errors, setErrors] = useState<errors>({});
 
@@ -31,6 +33,17 @@ export const useForm = (inputs:inputsArray, initialState: valuesState, validator
     }, [validators, setErrors]);
 
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { target : { name, value } } = e;
+        setValues((prevState: valuesState) => {
+            validateInputs(name, value, prevState);
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    }, [setValues, validateInputs]);
+
+    const onSelect: (event: SelectChangeEvent<any>, child: ReactNode) => void = useCallback((e: SelectChangeEvent<any>, child: ReactNode) => {
         const { target : { name, value } } = e;
         setValues((prevState: valuesState) => {
             validateInputs(name, value, prevState);
@@ -64,7 +77,7 @@ export const useForm = (inputs:inputsArray, initialState: valuesState, validator
         setInputs((prevState) => prevState.map((input) => inputsProps[input.id] ? {...input, ...inputsProps[input.id]} : input));
     }, [setInputs]);
 
-    const addInputs = useCallback((newIputs: inputsArray) => {
+    const addInputs = useCallback((newIputs: inputProps[]) => {
         setInputs((prevState) => [...prevState, ...newIputs]);
     }, []);
 
@@ -82,6 +95,7 @@ export const useForm = (inputs:inputsArray, initialState: valuesState, validator
         validators,
         errors,
         onChange,
+        onSelect,
         validateInputs,
         resetFormValues,
         clearErrors,
