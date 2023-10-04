@@ -13,11 +13,11 @@ import {
 import { v4 as uuid } from "uuid";
 
 export const SelectInput: React.FC<SelectInputProps> = ({
-    xs='auto',
-    sm='auto',
-    md='auto',
-    lg='auto',
-    xl='auto',
+    xs=12,
+    sm=12,
+    md=12,
+    lg=12,
+    xl=12,
     gridItemZeroMinWidth=false,
     id,
     labelText,
@@ -27,6 +27,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
     autoFocus=false,
     color="primary",
     disabled=false,
+    helperMessage,
     error,
     readOnly=false,
     required=false,
@@ -63,7 +64,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
                     autoFocus={autoFocus}
                     color={color}
                     disabled={disabled}
-                    error={error.status}
+                    error={error?.status}
                     readOnly={readOnly}
                     required={required}
                     value={value}
@@ -82,7 +83,15 @@ export const SelectInput: React.FC<SelectInputProps> = ({
                         </MenuItem>
                     ))}
                 </Select>
-                {error.status ?
+                {helperMessage ?
+                    (
+                        <FormHelperText>
+                            {helperMessage}
+                        </FormHelperText>
+                    )
+                    : null
+                }
+                {error?.status ?
                     (
                         <FormHelperText error={true}>
                             {error.message}

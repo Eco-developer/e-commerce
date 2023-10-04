@@ -5,11 +5,11 @@ import {
 import { TextFieldProps } from "@/interfaces";
 
 export const TextFieldInput: React.FC<TextFieldProps> = ({
-    xs='auto',
-    sm='auto',
-    md='auto',
-    lg='auto',
-    xl='auto',
+    xs=12,
+    sm=12,
+    md=12,
+    lg=12,
+    xl=12,
     gridItemZeroMinWidth=false,
     id,
     labelText,
@@ -20,6 +20,7 @@ export const TextFieldInput: React.FC<TextFieldProps> = ({
     color="primary",
     disabled=false,
     error,
+    helperMessage=null,
     fullWidth=true,
     placeholder,
     required=false,
@@ -49,11 +50,11 @@ export const TextFieldInput: React.FC<TextFieldProps> = ({
                 autoFocus={autoFocus}
                 color={color}
                 disabled={disabled}
-                error={error.status}
+                error={error?.status}
                 placeholder={placeholder}
                 required={required}
                 value={value}
-                helperText={error.status ? error.message : null}
+                helperText={error?.status ? error.message : helperMessage}
                 fullWidth={fullWidth}
                 type="text"
                 margin={margin}

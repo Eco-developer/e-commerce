@@ -5,17 +5,14 @@ import {
 } from "react";
 import { 
     valuesState, 
-    errors,  
-    InputStandardProps, 
-    SelectInputProps, 
-    TextFieldProps 
+    errors,
 } from "@/interfaces";
+import { inputProps } from "./inputProps";
 
 export type InputConstructorProps = {
-    inputType: string,
     values: valuesState;
-    input: { inputType: string } & InputStandardProps & SelectInputProps & TextFieldProps;
-    onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-    onSelect: (event: SelectChangeEvent<any>, child: ReactNode) => void;
-    errors: errors;
+    input: inputProps;
+    onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onSelect?: (event: SelectChangeEvent<any>, child: ReactNode) => void;
+    errors?: errors;
 }

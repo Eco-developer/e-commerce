@@ -1,6 +1,9 @@
-import { ChangeEventHandler } from "react";
+import { 
+    ChangeEventHandler, 
+    ReactNode 
+} from "react";
 
-export type TextFieldProps = {
+export type PasswordInputProps = {
     xs?: 'auto' | number | boolean,
     sm?: 'auto' | number | boolean,
     md?: 'auto' | number | boolean,
@@ -10,9 +13,9 @@ export type TextFieldProps = {
     id: string,
     labelText: string,
     name: string,
-    helperMessage?: string,
     onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
     autoComplete?: string,
+    helperMessage?: string,
     autoFocus?: boolean,
     color?: "error" | "primary" | "secondary" | "info" | "success" | "warning",
     disabled?: boolean,
@@ -22,11 +25,8 @@ export type TextFieldProps = {
     },
     fullWidth?: boolean,
     placeholder? : string,
+    readOnly?: boolean,
     required?: boolean,
     value: any,
     margin?: "none" | "dense",
-    minRows?: string | number,
-    maxRows?: string | number,
-    rows?: string | number,
-    size?: "small" | "medium"
 }

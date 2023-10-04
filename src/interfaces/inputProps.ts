@@ -1,6 +1,8 @@
-import { ChangeEventHandler } from "react";
+import { ReactNode } from "react";
+import { option } from "./SelectInputProps";
 
-export type TextFieldProps = {
+export type inputProps = {
+    inputType: string,
     xs?: 'auto' | number | boolean,
     sm?: 'auto' | number | boolean,
     md?: 'auto' | number | boolean,
@@ -10,23 +12,25 @@ export type TextFieldProps = {
     id: string,
     labelText: string,
     name: string,
-    helperMessage?: string,
-    onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
     autoComplete?: string,
+    helperMessage?: string,
     autoFocus?: boolean,
     color?: "error" | "primary" | "secondary" | "info" | "success" | "warning",
     disabled?: boolean,
-    error: {
-        status: boolean,
-        message: string,
-    },
+    endAdornment?: ReactNode,
     fullWidth?: boolean,
     placeholder? : string,
+    readOnly?: boolean,
     required?: boolean,
-    value: any,
+    startAdornment?: ReactNode,
+    type?: string,
     margin?: "none" | "dense",
     minRows?: string | number,
     maxRows?: string | number,
     rows?: string | number,
-    size?: "small" | "medium"
-}
+    size?: "small" | "medium",
+    options?: option[],
+    autoWidth?: boolean,
+    defaultOpen?: boolean,
+    multiple?: boolean,
+};

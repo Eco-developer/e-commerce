@@ -8,11 +8,11 @@ import {
 import { InputStandardProps } from "@/interfaces";
 
 export const InputStandard: React.FC<InputStandardProps> = ({
-    xs='auto',
-    sm='auto',
-    md='auto',
-    lg='auto',
-    xl='auto',
+    xs=12,
+    sm=12,
+    md=12,
+    lg=12,
+    xl=12,
     gridItemZeroMinWidth=false,
     id,
     labelText,
@@ -25,6 +25,7 @@ export const InputStandard: React.FC<InputStandardProps> = ({
     endAdornment,
     error,
     fullWidth=true,
+    helperMessage,
     placeholder,
     readOnly=false,
     required=false,
@@ -60,7 +61,7 @@ export const InputStandard: React.FC<InputStandardProps> = ({
                     color={color}
                     disabled={disabled}
                     endAdornment={endAdornment}
-                    error={error.status}
+                    error={error?.status}
                     fullWidth={fullWidth}
                     placeholder={placeholder}
                     readOnly={readOnly}
@@ -70,7 +71,15 @@ export const InputStandard: React.FC<InputStandardProps> = ({
                     value={value}
                     margin={margin}
                 />
-                {error.status ?
+                {helperMessage ?
+                    (
+                        <FormHelperText>
+                            {helperMessage}
+                        </FormHelperText>
+                    )
+                    : null
+                }
+                {error?.status ?
                     (
                         <FormHelperText error={true}>
                             {error.message}
