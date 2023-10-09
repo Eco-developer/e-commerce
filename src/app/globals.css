@@ -90,10 +90,10 @@ body {
 .main {
   height: 100vh;
   width: 100vw;
-  overflow-x: scroll;
+  background-color: #F7F8FA;
+  overflow-y: scroll;
   -ms-overflow-style: none; 
   scrollbar-width: none;
-  display: flex;
 }
 
 .main::-webkit-scrollbar {
