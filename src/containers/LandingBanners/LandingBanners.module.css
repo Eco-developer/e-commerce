@@ -1,31 +1,43 @@
+.content__main__container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 30px;
+    flex-grow: 1;
+    max-width: 1110px;
+}
 
 .content__main__rows {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 }
-  
-.banner__one {
+
+.banner {
     width: 100%;
-    max-width: 550px;
+    max-width: 540px;
     padding: 40px;
     box-sizing: border-box;
     height: 350px;
     border-radius: 10px;
-    background-color: #F2F3F5;
     box-shadow: 0px 2px 5px 0px rgba(38, 51, 77, 0.03);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+  
+.banner__one {
+    background-color: #F2F3F5;
     gap: 30px;
 }
   
 .banner__circle {
     border-radius: 50%;
-    width: 547px;
-    height: 547px;
+    width: 477px;
+    height: 477px;
     position: absolute;
 }
   
@@ -79,7 +91,80 @@
     object-fit: contain;
   
 }
-  
-@media screen and (min-width: 900px) {
 
+.banner__two {
+    background: #000;
+    display: grid;
+    place-items: center;
+}
+
+.banner__two__content {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.banner__two__img {
+    height: 147px;
+    object-fit: contain;
+}
+
+.banner__two__text {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner__three__img {
+    height: 120px;
+    object-fit: contain;
+}
+
+.banner__four {
+    display: grid;
+    place-items: center;
+    background-color: #F2F3F5;
+}
+
+.banner__four__logo {
+    height: 40px;
+    object-fit: contain;
+}
+
+.banner__four__img {
+    height: 100px;
+    object-fit: contain;
+}
+
+.banner__four__circle {
+    width: 140% !important;
+    height: 140% !important;
+    left: -20%;
+    top: 50%;
+    background: linear-gradient(180deg, #F14227 0%, #B31252 30.73%);
+}
+
+.banner__background__text {
+    position: absolute;
+    top: calc(50% - 52.5px);
+}
+
+@media screen and (min-width: 600px) {
+    .banner__circle {
+        width: 547px;
+        height: 547px;
+    }
+    
+    .banner__two__img {
+        height: 197px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .content__main__rows {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
