@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import styles from "./LandingBanners.module.css";
-import Image from "next/image";
 
 export const LandingBanners = () => (
     <div className={styles.content__main__container}>
