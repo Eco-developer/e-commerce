@@ -1,14 +1,3 @@
-.categories__container {
-    width: 100%;
-    overflow-x: scroll;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-}
-
-.categories__container::-webkit-scrollbar {
-    display: none;
-}
-
 .categories__content {
     display: flex;
     flex-direction: row;
@@ -41,12 +30,6 @@
 }
 
 @media screen and (min-width: 900px) {
-    .categories__container {
-        padding-left: 50px;
-        box-sizing: border-box;
-        overflow-x: hidden;
-        width: auto;
-    }
     .categories__content {
         width: 250px;
         padding: 25px;
