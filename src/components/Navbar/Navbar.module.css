@@ -8,16 +8,6 @@
     border-bottom: 2px solid #EDEFF2;
 }  
 
-.navbar__logo__container {
-    display: flex;
-    align-items: center;
-}
-
-.navbar__logo__img {
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
 .navbar__icons__container {
     display: flex;
     align-items: center;

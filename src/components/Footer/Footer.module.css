@@ -17,17 +17,6 @@
     cursor: default;
 }
 
-.footer__logo__container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    cursor: pointer; 
-}
-
-.footer__logo__img {
-    border-radius: 50%;
-}
-
 .footer__menu__container {
     display: flex;
     flex-direction: column;
