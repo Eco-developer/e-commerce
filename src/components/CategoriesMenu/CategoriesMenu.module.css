@@ -29,6 +29,19 @@
     margin-right: 20px;
 }
 
+.categories__item svg {
+    transition: all 0.3s ease-in-out;
+}
+
+.categories__item:hover svg {
+    color: #4D5E80;
+}
+
+.categories__item:hover > svg {
+    transform: translateX(5px) scale(1.1);
+    
+}
+
 @media screen and (min-width: 900px) {
     .categories__content {
         width: 250px;
