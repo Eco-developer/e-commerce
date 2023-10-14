@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import {
    Person,
    ShoppingCart,
+   Logout
 }from '@mui/icons-material';
 import styles from "./Navbar.module.css";
 
@@ -31,6 +32,17 @@ export const Navbar = () => {
                         textAlign="center"
                     >
                         Cart
+                    </Typography>
+                </div>
+                <div className={styles.navbar__icon__container}>
+                    <Logout/>
+                    <Typography 
+                        fontFamily="Barlow Condensed Regular" 
+                        fontSize="20px" 
+                        color="#4D5E80" 
+                        textAlign="center"
+                    >
+                        Logout
                     </Typography>
                 </div>
             </div>
