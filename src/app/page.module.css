@@ -33,22 +33,6 @@
   flex-direction: column;
 }
 
-.footer__container {
-  padding: 30px;
-  box-sizing: border-box;
-}
-
-.content__main__head {
-  display: flex;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.head__logo__img {
-  border-radius: 50%;
-  margin-right: 15px;
-}
-
 @media screen and (min-width: 900px) {
   .content__container {
     padding: 50px 0;
