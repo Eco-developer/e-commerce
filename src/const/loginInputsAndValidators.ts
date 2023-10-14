@@ -10,6 +10,7 @@ export const inputs = [
         id: "email_input",
         placeholder: "Enter your email.",
         labelText: "Email",
+        type: "email",
     },
     {
         inputType: PASSWORD_INPUT,
