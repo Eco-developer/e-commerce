@@ -6,6 +6,7 @@ export const useRequest = () => {
     const [alert, setAlert] = useState<alertState>({
         open: false,
     });
+    const [processing, setProcessing] = useState<boolean>(false);
 
     const handleCloseAlert = useCallback(() => {
         setAlert((prevState) => ({
@@ -22,6 +23,7 @@ export const useRequest = () => {
         succesAlert=false,
         subresource="",
     }: requestParameters) => {
+        setProcessing(true);
         try {
             const response = await axios({
                 method,
@@ -32,10 +34,11 @@ export const useRequest = () => {
                 setAlert({
                     severity: "success",
                     open: true,
-                    message: response?.data?.message
+                    message: response?.data?.message,
                 })
             }
-            return response.data.data
+            setProcessing(false);
+            return response.data.data;
         } catch (err:any) {
             setAlert({
                 severity:"error",
@@ -46,13 +49,15 @@ export const useRequest = () => {
                    : err.response.data.message.join("\n")
                 ) : "Server Error",
             })
+            setProcessing(false);
             return null;
         }
-    }, [setAlert])
+    }, [setAlert, setProcessing])
 
     return {
         alert,
+        processing, 
         handleRequest,
-        handleCloseAlert
+        handleCloseAlert,
     }
 }
