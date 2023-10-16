@@ -29,10 +29,10 @@ export const LoginForm = () => {
     } = useForm(inputs, initialState, validators);
     const {
         alert, 
+        processing,
         handleRequest,
-        handleCloseAlert
+        handleCloseAlert,
     } = useRequest();
-    const [processing, setProcessing] = useState<boolean>(false);
 
     const handleSubmit = async (e: HTMLFormElement) => {
         e.preventDefault();
