@@ -19,17 +19,21 @@ export const useRequest = () => {
         method="GET",
         data={},
         endpoint,
-        params="",
+        params={},
         succesAlert=false,
         subresource="",
+        headers={},
     }: requestParameters) => {
         setProcessing(true);
         try {
-            const response = await axios({
+            const options = {
                 method,
-                url: `${subresource}${endpoint}${params}`,
+                url: `${subresource}${endpoint}`,
                 data,
-            });
+                params,
+                headers,
+            };
+            const response = await axios(options);
             if (succesAlert) {
                 setAlert({
                     severity: "success",

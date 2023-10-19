@@ -6,9 +6,14 @@ export type requestParameters = {
         [key : string]: any
     },
     endpoint: string,
-    params?: string,
+    params?: {
+        [key : string]: string,
+    },
     succesAlert?: boolean,
     subresource?: string,
+    headers?: {
+        [key : string]: string,
+    },
 }
 
 export type alertState = {
