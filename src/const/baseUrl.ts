@@ -1,0 +1,1 @@
+export const API_TARGET = "https://target1.p.rapidapi.com"
