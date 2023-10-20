@@ -1,46 +1,25 @@
 import { Typography } from "@mui/material";
 import styles from "./CategoriesMenu.module.css";
 import {
-    ShoppingCart,
     ArrowForwardIos,
 } from '@mui/icons-material';
 
-const categories = [
-    {
-        text: "Equipment",
-        Icon: ShoppingCart,
-    },
-    {
-        text: "Controls",
-        Icon: ShoppingCart,
-    },
-    {
-        text: "Audio",
-        Icon: ShoppingCart,
-    },
-    {
-        text: "Tablets",
-        Icon: ShoppingCart,
-    },
-]
-
-export const CategoriesMenu = () => {
+export const CategoriesMenu: React.FC<any> = ({ stores }) => {
     return (
         <div className={styles.categories__content}>
-            {categories.map((categorie: {text: string, Icon: any}) => (
+            {stores.map((store: any) => (
                 <div 
-                    key={categorie.text} 
+                    key={store.location_id} 
                     className={styles.categories__item}
                 >
                     <div className={styles.categories__item__main}>
-                        <categorie.Icon/>
                         <Typography 
                             fontFamily="Barlow Condensed Regular" 
                             fontSize="15px" 
                             color="#4D5E80" 
-                            textAlign="center"
+                            textAlign="left"
                         >
-                            {categorie.text}
+                            {store.location_names[0]?.name}
                         </Typography>
                     </div>
                     <ArrowForwardIos/>
