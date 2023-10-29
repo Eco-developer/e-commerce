@@ -61,15 +61,16 @@ export const LoginForm = () => {
             handleCloseAlert={handleCloseAlert}
             buttons={[
                 {
-                    sm: 6,
-                    md: 6,
-                    lg: 6,
-                    xl: 6,
                     text: "LOGIN",
                     id: "login-btn",
                     type: "submit",
                     processing,
                     disabled
+                },
+                {
+                    variant: "outlined",
+                    text: "FORGET PASSWORD",
+                    id: "forget-password-btn",
                 }
             ]}
             link={{
