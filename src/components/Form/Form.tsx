@@ -1,14 +1,16 @@
 import { InputConstructor } from "../InputConstructor/InputConstructor";
-import { CardLayout } from "../CardLayout/CardLayout";
 import { 
     Alert,
     Grid, 
     Snackbar,
+    Typography,
 } from "@mui/material";
 import { 
     FormProps, 
     inputProps 
 } from "@/interfaces";
+import { Buttons } from "../Buttons/Buttons";
+import Link from "next/link";
 
 export const Form: React.FC<FormProps> = ({
     title,
@@ -36,18 +38,44 @@ export const Form: React.FC<FormProps> = ({
                 {alert?.message}
             </Alert>
         </Snackbar>
-        <form onSubmit={handleSubmit}>
-            <CardLayout
-                title={title}
-                subheader={subheader}
-                link={link}
-                buttons={buttons}
-                styleClass={styleClass}
-            >
+        <div className={styleClass}>
+            <form onSubmit={handleSubmit}>
                 <Grid
                     container={true}
                     spacing={2}
                 >
+                    <Grid 
+                        item={true}
+                        xs={12}
+                    >
+                        <Typography
+                            color="#000"
+                            fontFamily="Barlow Condensed Regular"
+                            fontSize="36px"
+                            fontWeight="500"
+                            lineHeight="30px"
+                            letterSpacing="1.44px"
+                        >
+                            {title}
+                        </Typography>
+                    </Grid>
+                    {subheader ?
+                        <Grid 
+                            item={true}
+                            xs={12}
+                        >
+                            <Typography
+                                color="#000"
+                                fontFamily="Barlow Condensed Regular"
+                                fontSize="16px"
+                                fontWeight="400"
+                                lineHeight="24px"
+                                letterSpacing="1.44px"
+                            >
+                                {subheader}
+                            </Typography>
+                        </Grid>
+                    : null}
                     {inputs.map((input: inputProps) => (
                         <InputConstructor
                             key={input.id}
@@ -58,8 +86,26 @@ export const Form: React.FC<FormProps> = ({
                             errors={errors}
                         />
                     ))}
+                    <Grid 
+                        item={true}
+                        xs={12}
+                    >
+                        <Buttons
+                            buttons={buttons}
+                        />
+                    </Grid>
+                    {link ? 
+                        <Grid 
+                            item={true}
+                            xs={12}
+                        >
+                            <p>
+                                {link.sideText} <Link style={{color: "#DB4444"}} href={link.to}>{link.text}</Link>.
+                            </p>
+                        </Grid>
+                    : null}
                 </Grid>
-            </CardLayout>
-        </form>
+            </form>
+        </div>
     </>
 )
