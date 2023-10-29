@@ -4,7 +4,6 @@ import {
     Grid 
 } from "@mui/material";
 import { ButtonBaseProps } from "@/interfaces";
-import styles from "./ButtonBase.module.css";
 
 export const ButtonBase: React.FC<ButtonBaseProps> = ({
     xs=12,
@@ -17,7 +16,7 @@ export const ButtonBase: React.FC<ButtonBaseProps> = ({
     processing=false,
     onClick,
     variant="contained",
-    color="primary",
+    color="error",
     text,
     endIcon,
     fullWidth=true,
@@ -43,7 +42,7 @@ export const ButtonBase: React.FC<ButtonBaseProps> = ({
             fullWidth={fullWidth}
             size={size}
             type={type}
-            className={`${styles.btn_color_orange} ${styleClass ? styleClass : ""}`}
+            className={styleClass}
         >
             {processing ?
                 <CircularProgress
