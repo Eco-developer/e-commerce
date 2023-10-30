@@ -49,7 +49,7 @@ export const InputStandard: React.FC<InputStandardProps> = ({
                     htmlFor={id}
                     variant="outlined"
                 >
-                    {labelText}
+                    {labelText}{required ? " *" : ""}
                 </InputLabel>
                 <OutlinedInput
                     label={labelText}
