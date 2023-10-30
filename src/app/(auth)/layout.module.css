@@ -27,6 +27,21 @@
     display: grid;
     place-items: center;
     width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.auth__content::-webkit-scrollbar {
+    width: 8px;               
+}
+
+.auth__content::-webkit-scrollbar-track {
+    background: transparent;        
+}
+
+.auth__content::-webkit-scrollbar-thumb {
+    background-color: #4D5E80;   
+    border-radius: 20px;       
 }
 
 .auth__content > div {
