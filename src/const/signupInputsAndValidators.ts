@@ -31,6 +31,7 @@ export const inputs = [
         id: "email_input",
         placeholder: "Enter an email.",
         labelText: "Email",
+        type: "email",
         required: true,
     },
     {
@@ -94,12 +95,6 @@ export const validators = {
             },
             message: "The email is required.",
         },
-        pattern: {
-            validate: (value: any) => {
-                return REGEX_EMAIL.test(value);
-            },
-            message: "Invalid email format.",
-        }
     },
     phone: {
         maxLength: {
@@ -116,12 +111,6 @@ export const validators = {
             },
             message: "The password is required.",
         },
-        pattern: {
-            validate: (value: any) => {
-                return REGEX_PASSWORD.test(value);
-            },
-            message: "Invalid password format.",
-        }
     },
     password_confirmation: {
         equal: {

@@ -4,54 +4,55 @@ import {
     useForm, 
     useRequest 
 } from "@/hooks";
-import { useRouter } from "next/navigation";
 import { 
     inputs,
     validators,
-} from "@/const/loginInputsAndValidators";
-import { useState } from "react";
+} from "@/const/signupInputsAndValidators";
 //import { endpoints } from "@/const/endpoints";  
 
-//const { login } = endpoints;
+//const { signup } = endpoints;
  
-export const LoginForm = () => {
+export const SignupForm = () => {
     const initialState = {
+        name: "",
+        lastname: "",
         email: "",
+        phone: "",
         password: "",
+        password_confirmation: "",
     }
-    const { push } = useRouter();
     const {
         updatedInputs,
         values,
         errors,
-        getFormErrorStatus,
         onChange,
+        getFormErrorStatus,
     } = useForm(inputs, initialState, validators);
     const {
         alert, 
         processing,
         handleRequest,
-        handleCloseAlert,
+        handleCloseAlert
     } = useRequest();
+
+    const disabled = getFormErrorStatus();
 
     const handleSubmit = async (e: HTMLFormElement) => {
         e.preventDefault();
-        /*const response = await handleRequest({
+       /* const response = await handleRequest({
             method: "POST",
             data: values,
-            endpoint: login,
+            endpoint: signup,
         })
         if (response?.token) {
-            localStorage.setItem('token', response.token)
-            push("/")
+            setDialog(true);
         }*/
-        console.log(values)
-        
     }
-    const disabled = getFormErrorStatus();
+
     return (
         <Form
-            title="Login"
+            title="Create account"
+            subheader="The fields with * are required."
             inputs={updatedInputs}
             values={values}
             onChange={onChange}
@@ -61,22 +62,17 @@ export const LoginForm = () => {
             handleCloseAlert={handleCloseAlert}
             buttons={[
                 {
-                    text: "LOGIN",
-                    id: "login-btn",
+                    text: "CREATE ACCOUNT",
+                    id: "signup-btn",
                     type: "submit",
                     processing,
                     disabled
-                },
-                {
-                    variant: "outlined",
-                    text: "FORGET PASSWORD",
-                    id: "forget-password-btn",
                 }
             ]}
             link={{
-                sideText: "Do not have an account? ",
-                to: "/signup",
-                text: "Create account"
+                sideText: "Already have an account? ",
+                to: "/login",
+                text: "Sign in"
             }}
         />
     )
