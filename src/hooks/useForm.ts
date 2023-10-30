@@ -20,14 +20,15 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
     const validateInputs = useCallback((name: string, value: any, values: valuesState): void => {
         if (validators[name]) {
             Object.keys(validators[name]).some((key: string) => {
+                const status = !validators[name][key].validate(value, values);
                 setErrors((prevState: errors) => ({ 
                     ...prevState,
                     [name]: {
-                        status: !validators[name][key].validate(value, values),
+                        status,
                         message: validators[name][key].message,
                     }
                 }))
-                return !validators[name][key].validate(value, values);
+                return status;
             })
         }
     }, [validators, setErrors]);
@@ -81,13 +82,17 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
         setInputs((prevState) => [...prevState, ...newIputs]);
     }, []);
 
-    const getFormErrorStatus = useCallback((values: valuesState) => {
-        return Object.keys(validators).some((name: string) => {
-            return Object.keys(validators[name]).some((key: string) => {
-                return !validators[name][key].validate(values[name], values);
+    const getFormErrorStatus = useCallback(() => {
+        let isderty: boolean = false;
+        Object.entries(validators).some(([name, fieldValidator]) => {
+            Object.entries(fieldValidator).some(([key, validator]) => {
+                isderty = !validator.validate(values[name], values);
+                return isderty;
             })
+            return isderty;
         })
-    }, [validators]);
+        return isderty;
+    }, [validators, values]);
 
     return {
         updatedInputs,
