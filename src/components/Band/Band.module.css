@@ -1,0 +1,8 @@
+.band__container {
+    display: grid;
+    width: 100%;
+    padding: 12px;
+    place-items: center;
+    background: #000;
+    cursor: default;
+}
