@@ -90,7 +90,7 @@ body {
 .main {
   height: 100vh;
   width: 100vw;
-  background-color: #F7F8FA;
+  background-color: #FFF;
   overflow-y: scroll;
   -ms-overflow-style: none; 
   scrollbar-width: none;

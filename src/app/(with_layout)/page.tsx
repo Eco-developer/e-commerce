@@ -1,8 +1,6 @@
-import { Navbar } from '@/components/Navbar/Navbar'
 import { CategoriesMenu } from '@/components/CategoriesMenu/CategoriesMenu'
 import { LandingBanners } from '@/containers/LandingBanners/LandingBanners'
 import { LandingBannersSide } from '@/containers/LandingBannersSide/LandingBannersSide'
-import { Footer } from '@/components/Footer/Footer'
 import styles from './page.module.css'
 import { API_TARGET } from '@/const/baseUrl'
 
@@ -34,23 +32,19 @@ export default async function Home() {
     categories,
   } = await getData();
   return (
-    <section className={styles.home__container}>
-      <Navbar/>
-      <section className={styles.content__container}>
-        <aside className={styles.content__side__container}>
-          { stores.length ?
-            <CategoriesMenu 
-              stores={stores[0].locations}
-              categories={categories.slots["1100"]?.content?.taxonomy_nodes} 
-            />
-          : null  } 
-          <LandingBannersSide/>
-        </aside>
-        <section className={styles.content__main__container}>
-          <LandingBanners/>
-        </section>
+    <section className={styles.content__container}>
+      <aside className={styles.content__side__container}>
+        { stores.length ?
+          <CategoriesMenu 
+            stores={stores[0].locations}
+            categories={categories.slots["1100"]?.content?.taxonomy_nodes} 
+          />
+        : null  } 
+        <LandingBannersSide/>
+      </aside>
+      <section className={styles.content__main__container}>
+        <LandingBanners/>
       </section>
-      <Footer/>
     </section>
   )
 }
