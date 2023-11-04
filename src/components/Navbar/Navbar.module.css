@@ -1,10 +1,12 @@
 .navbar__container {
     display: flex;
+    position: relative;
     height: 90px;
-    padding: 0px 30px;
+    padding: 20px 30px;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     box-sizing: border-box;
+    background-color: #FFF;
     border-bottom: 2px solid #EDEFF2;
 }  
 
@@ -13,6 +15,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    margin-right: 30px;
 }
 
 .navbar__icon__container {
@@ -21,25 +24,23 @@
     gap: 10px;
 }
 
-.navbar__icon__container > p {
-    display: none;
-} 
-
 .navbar__icon__container > svg {
     font-size: 30px;
-    color: #4D5E80;
+    color: #000;
+    transition: 0.3s all ease-in-out;
+}
+
+.navbar__icon__container > svg:hover {
+    color: #DB4444;
 }
 
 @media screen and (min-width: 700px) { 
     .navbar__container { 
-        padding: 0px 60px;
+        padding: 20px 60px;
     }
-
-    .navbar__icon__container > p {
-        display: block;
-    } 
 
     .navbar__icons__container { 
         gap: 30px;
+        margin-right: 0;
     }
 }
