@@ -1,11 +1,33 @@
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { Menu as MenuBase } from '@mui/material';
+import { Menu, MenuProps } from '@mui/material';
 import { MouseEvent, useState } from 'react';
+import { styled, alpha } from '@mui/material/styles';
 import Link from 'next/link';
 
-export const Menu: React.FC<any> = ({
+const StyledMenu = styled((props: MenuProps) => (
+    <Menu
+      {...props}
+    />
+  ))(({ theme }) => ({
+    '& .MuiPaper-root': {
+      boxShadow:
+        '0px 4px 10px -4px rgba(0,0,0,0.1)',
+      backgroundColor: "#f6000075",
+      backdropFilter: "blur(5px)",
+      color: "#ffffff",
+      '& .MuiMenu-list': {
+        padding: '0',
+        margin: '0',
+        '& svg': {
+            color: '#ffffff',
+        }
+      },
+    },
+  }));
+
+export const DropdownMenu: React.FC<any> = ({
     menuItems,
     renderButton
     }) => {
@@ -25,11 +47,7 @@ export const Menu: React.FC<any> = ({
             "aria-expanded": open ? 'true' : undefined,
             onClick: handleClick,
         })}
-        <MenuBase
-            sx={{
-                backdropFilter: "blur(10px)",
-                backgroundColor: "#db4444a6"
-            }}
+        <StyledMenu
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
@@ -58,7 +76,7 @@ export const Menu: React.FC<any> = ({
                             <MenuItem onClick={item.onClick}>
                                     {item.Icon ? 
                                         <ListItemIcon>
-                                            <item.Icon fontSize="small" />
+                                            <item.Icon fontSize="small"/>
                                         </ListItemIcon>
                                     : null}
                                     <ListItemText>{item.text}</ListItemText>
@@ -67,7 +85,7 @@ export const Menu: React.FC<any> = ({
                     }
                 })
             }
-        </MenuBase>
+        </StyledMenu>
     </>
   );
 }
