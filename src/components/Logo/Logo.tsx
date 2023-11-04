@@ -7,18 +7,16 @@ export const Logo = () => (
         <Link
             href="/"
         >
-            <img 
-                src="/assets/logo.jpg" 
-                alt="logo_img" 
-                className={styles.logo__img}
-            />
             <Typography 
                 fontFamily="Barlow Condensed Regular" 
-                fontSize="30px" 
-                color="#4D5E80" 
+                fontSize="25px" 
+                color="#000" 
                 textAlign="center"
+                fontWeight="700"
+                lineHeight="24px"
+                letterSpacing="0.72px"
                 >
-                Tech Market
+                Exclusive
             </Typography>
         </Link>
     </div>
