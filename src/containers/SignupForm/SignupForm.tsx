@@ -26,7 +26,7 @@ export const SignupForm = () => {
         values,
         errors,
         onChange,
-        getFormErrorStatus,
+        isDerty,
     } = useForm(inputs, initialState, validators);
     const {
         alert, 
@@ -34,8 +34,6 @@ export const SignupForm = () => {
         handleRequest,
         handleCloseAlert
     } = useRequest();
-
-    const disabled = getFormErrorStatus();
 
     const handleSubmit = async (e: HTMLFormElement) => {
         e.preventDefault();
@@ -66,7 +64,7 @@ export const SignupForm = () => {
                     id: "signup-btn",
                     type: "submit",
                     processing,
-                    disabled
+                    disabled: isDerty
                 }
             ]}
             link={{

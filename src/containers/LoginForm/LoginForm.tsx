@@ -24,7 +24,7 @@ export const LoginForm = () => {
         updatedInputs,
         values,
         errors,
-        getFormErrorStatus,
+        isDerty,
         onChange,
     } = useForm(inputs, initialState, validators);
     const {
@@ -48,7 +48,6 @@ export const LoginForm = () => {
         console.log(values)
         
     }
-    const disabled = getFormErrorStatus();
     return (
         <Form
             title="Login"
@@ -65,7 +64,7 @@ export const LoginForm = () => {
                     id: "login-btn",
                     type: "submit",
                     processing,
-                    disabled
+                    disabled: isDerty,
                 },
                 {
                     variant: "outlined",
