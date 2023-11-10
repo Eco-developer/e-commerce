@@ -6,6 +6,7 @@ import { PasswordInputProps } from "./PasswordInputProps";
 import { InputConstructorProps } from "./InputConstructorProps"; 
 import { inputProps } from "./inputProps";
 import { 
+    formState,
     inputsArray,
     valuesState,
     validators, 
@@ -26,6 +27,7 @@ export type {
     TextFieldProps,
     PasswordInputProps,
     InputConstructorProps,
+    formState,
     inputProps,
     inputsArray,
     valuesState,

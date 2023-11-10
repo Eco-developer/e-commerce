@@ -5,74 +5,120 @@ import {
     ReactNode, 
 } from "react"
 import {    
+    formState,
     valuesState,
     validators, 
     errors,
     inputProps,
 } from "@/interfaces";
 import { SelectChangeEvent } from "@mui/material";
+import { getFormStateErrors } from "@/helpers";
 
 export const useForm = (inputs:inputProps[], initialState: valuesState, validators: validators={}) => {
     const [updatedInputs, setInputs] = useState<inputProps[]>(inputs);
-    const [values, setValues] = useState<valuesState>(initialState);
-    const [errors, setErrors] = useState<errors>({});
+    const [formState, setFormState] = useState<formState>({
+        isDerty: getFormStateErrors(initialState, validators),
+        values: initialState,
+        errors: {}
+    })
 
-    const validateInputs = useCallback((name: string, value: any, values: valuesState): void => {
+    const validateInputs = useCallback((name: string, value: any, values: valuesState): errors => {
+        let temp: errors = {
+            [name]: {
+                status: false,
+                message: "",
+            },
+        };
         if (validators[name]) {
             Object.keys(validators[name]).some((key: string) => {
                 const status = !validators[name][key].validate(value, values);
-                setErrors((prevState: errors) => ({ 
-                    ...prevState,
-                    [name]: {
-                        status,
-                        message: validators[name][key].message,
-                    }
-                }))
+                temp[name] = {
+                    status,
+                    message: validators[name][key].message,
+                };
                 return status;
             })
         }
-    }, [validators, setErrors]);
+        return temp;
+    }, [validators]);
 
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { target : { name, value } } = e;
-        setValues((prevState: valuesState) => {
-            validateInputs(name, value, prevState);
+        setFormState((prevState: formState) => {
+            const error = validateInputs(name, value, prevState.values);
             return {
-                ...prevState,
-                [name]: value,
+                isDerty: getFormStateErrors({
+                    ...prevState.values,
+                    [name]: value,
+                }, validators),    
+                values: {
+                    ...prevState.values,
+                    [name]: value,
+                },
+                errors: {
+                    ...prevState.errors,
+                    ...error,
+                }    
             }
         })
-    }, [setValues, validateInputs]);
+    }, [setFormState, validateInputs, validators]);
 
     const onSelect: (event: SelectChangeEvent<any>, child: ReactNode) => void = useCallback((e: SelectChangeEvent<any>, child: ReactNode) => {
         const { target : { name, value } } = e;
-        setValues((prevState: valuesState) => {
-            validateInputs(name, value, prevState);
+        setFormState((prevState: formState) => {
+            const error = validateInputs(name, value, prevState.values);
             return {
-                ...prevState,
-                [name]: value,
+                isDerty: getFormStateErrors({
+                    ...prevState.values,
+                    [name]: value,
+                }, validators),    
+                values: {
+                    ...prevState.values,
+                    [name]: value,
+                },
+                errors: {
+                    ...prevState.errors,
+                    ...error,
+                }    
             }
         })
-    }, [setValues, validateInputs]);
+    }, [setFormState, validateInputs, validators]);
 
     const resetFormValues = useCallback(() => {
-        setValues(initialState);
-        setErrors({});
-    }, [initialState, setValues, setErrors]);
+        setFormState({
+            isDerty: getFormStateErrors(initialState, validators),    
+            values: initialState,
+            errors: {}    
+        })
+    }, [initialState, setFormState, validators]);
 
     const setValue = useCallback((name: string, value: any) => {
-        setValues((prevState: valuesState) => {
-            validateInputs(name, value, prevState);
+        setFormState((prevState: formState) => {
+            const error = validateInputs(name, value, prevState.values);
             return {
-                ...prevState,
-                [name]: value,
+                isDerty: getFormStateErrors({
+                    ...prevState.values,
+                    [name]: value,
+                }, validators),    
+                values: {
+                    ...prevState.values,
+                    [name]: value,
+                },
+                errors: {
+                    ...prevState.errors,
+                    ...error,
+                }    
             }
         })
-    }, [setValues, validateInputs]);
+    }, [setFormState, validateInputs, validators]);
 
     const clearErrors = useCallback(() => {
-        setErrors({});
-    }, []);
+        setFormState((prevState: formState) => ({
+            isDerty: prevState.isDerty,
+            values: prevState.values,
+            errors: {},
+        }));
+    }, [setFormState]);
     
     const modifyInputs = useCallback((inputsProps: { [key : string] : any }) => {
         setInputs((prevState) => prevState.map((input) => inputsProps[input.id] ? {...input, ...inputsProps[input.id]} : input));
@@ -80,25 +126,13 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
 
     const addInputs = useCallback((newIputs: inputProps[]) => {
         setInputs((prevState) => [...prevState, ...newIputs]);
-    }, []);
-
-    const getFormErrorStatus = useCallback(() => {
-        let isderty: boolean = false;
-        Object.entries(validators).some(([name, fieldValidator]) => {
-            Object.entries(fieldValidator).some(([key, validator]) => {
-                isderty = !validator.validate(values[name], values);
-                return isderty;
-            })
-            return isderty;
-        })
-        return isderty;
-    }, [validators, values]);
+    }, [setInputs]);
 
     return {
+        isDerty: formState.isDerty,
+        values: formState.values,
+        errors: formState.errors,
         updatedInputs,
-        values,
-        validators,
-        errors,
         onChange,
         onSelect,
         validateInputs,
@@ -107,6 +141,5 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
         setValue,
         modifyInputs,
         addInputs,
-        getFormErrorStatus,
     }
 }

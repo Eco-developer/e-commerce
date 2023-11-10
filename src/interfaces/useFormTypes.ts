@@ -21,3 +21,9 @@ export type errors = {
         message: string
     }
 }
+
+export type formState = {
+    isDerty: boolean,
+    values: valuesState,
+    errors: errors,
+}

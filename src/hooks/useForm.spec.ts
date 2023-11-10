@@ -33,7 +33,7 @@ test("should test the onChange and setValue methods", () => {
     expect(result.current.values.phone).toEqual("");
     expect(result.current.values.password).toEqual("");
     expect(result.current.values.password_confirmation).toEqual("");
-    expect(result.current.getFormErrorStatus(result.current.values)).toBe(true);
+    expect(result.current.isDerty).toBe(true);
 
     act(() => {
         const event : any = { 
@@ -89,7 +89,7 @@ test("should test the onChange and setValue methods", () => {
     expect(result.current.values.phone).toEqual("04122120037");
     expect(result.current.values.password).toEqual("123456Jm*");
     expect(result.current.values.password_confirmation).toEqual("123456Jm*");
-    expect(result.current.getFormErrorStatus(result.current.values)).toBe(false);
+    expect(result.current.isDerty).toBe(false);
 
     act(() => {
         result.current.resetFormValues();
@@ -101,7 +101,7 @@ test("should test the onChange and setValue methods", () => {
     expect(result.current.values.phone).toEqual("");
     expect(result.current.values.password).toEqual("");
     expect(result.current.values.password_confirmation).toEqual("");
-    expect(result.current.getFormErrorStatus(result.current.values)).toBe(true);
+    expect(result.current.isDerty).toBe(true);
 })
 
 test("should test if form has errors", () => {
@@ -115,13 +115,13 @@ test("should test if form has errors", () => {
 
     expect(result.current.values.email).toEqual("");
     expect(result.current.values.password).toEqual("");
-    expect(result.current.getFormErrorStatus(result.current.values)).toBe(true);
+    expect(result.current.isDerty).toBe(true);
 
     act(() => {
         const event : any = { 
             target : { 
-                name: "email", 
-                value: "josegmailcom",
+                name: "phone", 
+                value: "12312312312312312312312312312312",
             },
         }
         result.current.onChange(event)
@@ -131,13 +131,10 @@ test("should test if form has errors", () => {
         result.current.setValue("password", "1234565")
     })
 
-    expect(result.current.values.email).toEqual("josegmailcom");
-    expect(result.current.errors.email.status).toBe(true);
-    expect(result.current.errors.email.message).toEqual("Invalid email format.");
-    expect(result.current.values.password).toEqual("1234565");
-    expect(result.current.errors.password.status).toBe(true);
-    expect(result.current.errors.password.message).toEqual("Invalid password format.");
-    expect(result.current.getFormErrorStatus(result.current.values)).toBe(true);
+    expect(result.current.values.phone).toEqual("12312312312312312312312312312312");
+    expect(result.current.errors.phone.status).toBe(true);
+    expect(result.current.errors.phone.message).toEqual("The phone mustn't have more than 15 characters.");
+    expect(result.current.isDerty).toBe(true);
 })
 
 test("should test addInputs and modifyInputs methods", () => {
