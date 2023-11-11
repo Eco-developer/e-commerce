@@ -1,19 +1,30 @@
 .footer__container {
     display: flex;
     padding: 0px 20px;
+    flex-direction: column;
     align-items: flex-start;
     box-sizing: border-box;
+    background-color: #000;
     width: 100%;
     border-top: 2px solid var(--gray-blue-grey-blue-95, #EDEFF2);
 }
 
 .footer__content {
     display: flex;
+    width: 100%;
     padding: 30px 0px;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
     flex: 1 0 0;    
+    cursor: default;
+}
+
+.footer__author {
+    padding: 10px;
+    width: 100%;
+    display: grid;
+    place-items: center;
     cursor: default;
 }
 
@@ -27,7 +38,7 @@
 .footer__menu__container > p {
     font-family: "Barlow Condensed Regular";
     font-size: 15px; 
-    color: #6B7A99; 
+    color: #FFF; 
     line-height: 25px;
     font-weight: 700px;
 }

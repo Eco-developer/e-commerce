@@ -6,7 +6,7 @@ import { Logo } from "../Logo/Logo";
 export const Footer = () => (
     <footer className={styles.footer__container}>
         <div className={styles.footer__content}>
-            <Logo/>
+            <Logo color="#FFF"/>
             {footerMenu.map((menu: string[], index: number) => (
                 <div 
                     key={index}
@@ -19,6 +19,20 @@ export const Footer = () => (
                     ))}
                 </div>
             ))}
+        </div>
+        <div className={styles.footer__author}>
+            <Typography 
+                fontFamily="Barlow Condensed Regular" 
+                fontSize="15px" 
+                color="#FFF" 
+                textAlign="center"
+                fontWeight="700"
+                lineHeight="24px"
+                letterSpacing="0.72px"
+                >
+                Developed by Ecodeveloper
+            </Typography>
+        
         </div>
     </footer>
 );
