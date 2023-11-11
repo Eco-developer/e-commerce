@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    width: 100%;
 }
 
 .banner {
@@ -162,7 +163,7 @@
 
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 900px) {
     .content__main__rows {
         flex-direction: row;
         justify-content: space-between;
