@@ -3,6 +3,7 @@ import { SelectInputProps } from "./SelectInputProps";
 import { option as selectOption} from "./SelectInputProps";
 import { TextFieldProps } from "./TextField";
 import { PasswordInputProps } from "./PasswordInputProps"; 
+import { CheckboxInputProps } from "./CheckboxInputProps";
 import { InputConstructorProps } from "./InputConstructorProps"; 
 import { inputProps } from "./inputProps";
 import { 
@@ -26,6 +27,7 @@ export type {
     selectOption,
     TextFieldProps,
     PasswordInputProps,
+    CheckboxInputProps,
     InputConstructorProps,
     formState,
     inputProps,
