@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FormEventHandler, ReactNode } from "react";
+import { ChangeEvent, ChangeEventHandler, FormEventHandler, ReactNode } from "react";
 import { 
     ButtonBaseProps, 
     alertState, 
@@ -16,7 +16,8 @@ export type FormProps = {
     inputs: inputProps[],
     values: valuesState,
     onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
-    onSelect?: (event: SelectChangeEvent<any>, child: ReactNode) => void,
+    onSelect?: (e: SelectChangeEvent<any>, child: ReactNode) => void,
+    onChecked?: (e: ChangeEvent<HTMLInputElement>) => void,
     errors?: errors,
     handleSubmit: any,
     alert?: alertState,

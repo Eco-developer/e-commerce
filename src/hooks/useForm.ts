@@ -63,7 +63,7 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
         })
     }, [setFormState, validateInputs, validators]);
 
-    const onSelect: (event: SelectChangeEvent<any>, child: ReactNode) => void = useCallback((e: SelectChangeEvent<any>, child: ReactNode) => {
+    const onSelect = useCallback((e: SelectChangeEvent<any>, child: ReactNode) => {
         const { target : { name, value } } = e;
         setFormState((prevState: formState) => {
             const error = validateInputs(name, value, prevState.values);
@@ -83,6 +83,19 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
             }
         })
     }, [setFormState, validateInputs, validators]);
+
+    const onChecked = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const { target : { name, checked } } = e;
+        setFormState((prevState: formState) => {
+            return {
+                ...prevState,    
+                values: {
+                    ...prevState.values,
+                    [name]: checked,
+                },
+            }
+        })
+    }, [setFormState]);
 
     const resetFormValues = useCallback(() => {
         setFormState({
@@ -135,6 +148,7 @@ export const useForm = (inputs:inputProps[], initialState: valuesState, validato
         updatedInputs,
         onChange,
         onSelect,
+        onChecked,
         validateInputs,
         resetFormValues,
         clearErrors,

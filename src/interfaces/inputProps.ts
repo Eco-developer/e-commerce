@@ -1,5 +1,14 @@
-import { ReactNode } from "react";
+import { 
+    ChangeEvent,
+    ChangeEventHandler, 
+    ReactNode 
+} from "react";
 import { option } from "./SelectInputProps";
+import { 
+    valuesState, 
+    errors 
+} from "./useFormTypes";
+import { SelectChangeEvent } from "@mui/material";
 
 export type inputProps = {
     inputType: string,
@@ -33,4 +42,13 @@ export type inputProps = {
     autoWidth?: boolean,
     defaultOpen?: boolean,
     multiple?: boolean,
+    icon?: ReactNode,
+    checkedIcon?: ReactNode,
+    render?: (props: {
+        values?: valuesState,
+        onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
+        onSelect?: (e: SelectChangeEvent<any>, child: ReactNode) => void,
+        onChecked?: (e: ChangeEvent<HTMLInputElement>) => void,
+        errors?: errors
+    }) => ReactNode,
 };

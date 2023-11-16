@@ -11,7 +11,7 @@ export type CheckboxInputProps = {
     labelText?: string,
     helperMessage?: string,
     name: string,
-    onChecked?: ((event: ChangeEvent<HTMLInputElement>, checked: boolean) => void),
+    onChecked?: (e: ChangeEvent<HTMLInputElement>) => void,
     color?: "error" | "primary" | "secondary" | "info" | "success" | "warning",
     disabled?: boolean,
     error: {

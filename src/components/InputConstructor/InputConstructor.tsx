@@ -3,11 +3,14 @@ import {
     SelectInput,
     TextFieldInput,
     PasswordInput,
+    CheckboxInput,
 } from "../Inputs";
 import { InputConstructorProps } from "@/interfaces";
 import { 
+    CHECKBOX_INPUT,
     INPUT_STANDARD, 
     PASSWORD_INPUT, 
+    RENDER, 
     SELECT_INPUT, 
     TEXT_FIELD_INPUT 
 } from "@/const/inputTypes";
@@ -17,6 +20,7 @@ export const InputConstructor: React.FC<InputConstructorProps> = ({
     input,
     onChange,
     onSelect,
+    onChecked,
     errors={},
 }) => {
     switch (input.inputType) {
@@ -138,6 +142,41 @@ export const InputConstructor: React.FC<InputConstructorProps> = ({
                     size={input.size}
                 />
             )
+        }
+        case CHECKBOX_INPUT: {
+            return (
+                <CheckboxInput
+                    xs={input.xs}
+                    sm={input.sm}
+                    md={input.md}
+                    lg={input.lg}
+                    xl={input.xl}
+                    gridItemZeroMinWidth={input.gridItemZeroMinWidth}
+                    id={input.id}
+                    labelText={input.labelText}
+                    name={input.name}
+                    onChecked={onChecked}
+                    color={input.color}
+                    disabled={input.disabled}
+                    error={errors[input.name]}
+                    helperMessage={input.helperMessage}
+                    required={input.required}
+                    checked={values[input.name]}
+                    size={input.size}
+                    icon={input.icon}
+                    checkedIcon={input.checkedIcon}
+                />
+            )
+        }
+        case RENDER: {
+            return input.render ? 
+                input.render({ 
+                    values,
+                    onChange,
+                    onSelect,
+                    onChecked,
+                    errors,
+                })   : null
         }
         default:
             return null;

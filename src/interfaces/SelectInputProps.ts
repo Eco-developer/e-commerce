@@ -17,7 +17,7 @@ export type SelectInputProps = {
     labelText: string,
     helperMessage?: string,
     name: string,
-    onSelect?: (event: SelectChangeEvent<any>, child: ReactNode) => void,
+    onSelect?: (e: SelectChangeEvent<any>, child: ReactNode) => void,
     autoComplete?: string,
     autoFocus?: boolean,
     color?: "error" | "primary" | "secondary" | "info" | "success" | "warning",

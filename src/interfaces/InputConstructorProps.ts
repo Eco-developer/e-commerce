@@ -1,5 +1,6 @@
 import { SelectChangeEvent } from "@mui/material";
 import {
+    ChangeEvent,
     ChangeEventHandler, 
     ReactNode 
 } from "react";
@@ -13,6 +14,7 @@ export type InputConstructorProps = {
     values: valuesState;
     input: inputProps;
     onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-    onSelect?: (event: SelectChangeEvent<any>, child: ReactNode) => void;
+    onSelect?: (e: SelectChangeEvent<any>, child: ReactNode) => void;
+    onChecked?: (e: ChangeEvent<HTMLInputElement>) => void,
     errors?: errors;
 }

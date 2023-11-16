@@ -20,6 +20,7 @@ export const Form: React.FC<FormProps> = ({
     values,
     onChange,
     onSelect,
+    onChecked,
     errors,
     handleSubmit,
     alert,
@@ -83,6 +84,7 @@ export const Form: React.FC<FormProps> = ({
                             input={input}
                             onChange={onChange}
                             onSelect={onSelect}
+                            onChecked={onChecked}
                             errors={errors}
                         />
                     ))}
