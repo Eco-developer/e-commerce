@@ -60,20 +60,20 @@ export const DropdownMenu: React.FC<any> = ({
                 menuItems.map((item:any) => {
                     if (item.link) {
                         return (
-                                <Link href={item.link}>
-                            <MenuItem>
-                                    {item.Icon ? 
-                                        <ListItemIcon>
-                                            <item.Icon fontSize="small" />
-                                        </ListItemIcon>
-                                    : null}
-                                    <ListItemText>{item.text}</ListItemText>
-                            </MenuItem>
-                                </Link>
+                            <Link key={item.text} href={item.link}>
+                                <MenuItem>
+                                        {item.Icon ? 
+                                            <ListItemIcon>
+                                                <item.Icon fontSize="small" />
+                                            </ListItemIcon>
+                                        : null}
+                                        <ListItemText>{item.text}</ListItemText>
+                                </MenuItem>
+                            </Link>
                         )
                     } else {
                         return (
-                            <MenuItem onClick={item.onClick}>
+                            <MenuItem key={item.text} onClick={item.onClick}>
                                     {item.Icon ? 
                                         <ListItemIcon>
                                             <item.Icon fontSize="small"/>
