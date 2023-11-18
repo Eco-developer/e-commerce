@@ -45,21 +45,23 @@ export const Form: React.FC<FormProps> = ({
                     container={true}
                     spacing={2}
                 >
-                    <Grid 
-                        item={true}
-                        xs={12}
-                    >
-                        <Typography
-                            color="#000"
-                            fontFamily="Barlow Condensed Regular"
-                            fontSize="36px"
-                            fontWeight="500"
-                            lineHeight="30px"
-                            letterSpacing="1.44px"
+                    {title ?   
+                        <Grid 
+                            item={true}
+                            xs={12}
                         >
-                            {title}
-                        </Typography>
-                    </Grid>
+                            <Typography
+                                color="#000"
+                                fontFamily="Barlow Condensed Regular"
+                                fontSize="36px"
+                                fontWeight="500"
+                                lineHeight="30px"
+                                letterSpacing="1.44px"
+                            >
+                                {title}
+                            </Typography>
+                        </Grid>
+                    :null}
                     {subheader ?
                         <Grid 
                             item={true}
