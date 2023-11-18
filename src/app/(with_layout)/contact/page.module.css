@@ -1,17 +1,15 @@
 .contact__container {
     flex-grow: 1;
     display: flex;
-    gap: 20px;
     flex-direction: column;
     padding: 30px;
     align-items: center;
 }
 
-@media screen and (min-width: 900px) { 
+@media screen and (min-width: 600px) { 
     .contact__container {
-        padding: 50px;
-        gap: 40px;
         flex-direction: row;
         align-items: flex-start;
+        justify-content: center;
     }
 }
