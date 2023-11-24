@@ -1,21 +1,9 @@
-import { 
-    SvgIconTypeMap, 
-    Typography 
-} from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { Typography } from "@mui/material";
+import {
+    Statistic,
+    StatisticsGridProps
+} from "@/interfaces";
 import styles from "./StatisticsGrid.module.css";
-
-type StatisticsGridProps = {
-    statistics?: Statistic[];
-}
-
-type Statistic = {
-    Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
-        muiName: string;
-    };
-    metric: string;
-    text: string;
-}
 
 export const StatisticsGrid: React.FC<StatisticsGridProps> = ({statistics=[]}) => (
     <div className={styles.statistics__container}>

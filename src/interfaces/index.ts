@@ -20,6 +20,10 @@ import {
 import { ButtonBaseProps } from "./ButtonBaseProps";
 import { CardLayoutProps } from "./CardLayoutProps"; 
 import { FormProps } from "./FormProps";
+import {
+    Statistic,
+    StatisticsGridProps,
+} from "./StatisticsGridProps";
 
 export type {
     InputStandardProps,
@@ -40,4 +44,6 @@ export type {
     ButtonBaseProps,
     CardLayoutProps,
     FormProps,
+    Statistic,
+    StatisticsGridProps,
 }
