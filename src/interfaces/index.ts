@@ -28,6 +28,10 @@ import {
     TeamGridProps,
     Member,
 } from "./TeamGridProps";
+import { 
+    ServicesGridProps,
+    Service,
+} from "./ServicesGridProps";
 
 export type {
     InputStandardProps,
@@ -52,4 +56,6 @@ export type {
     StatisticsGridProps,
     TeamGridProps,
     Member,
+    ServicesGridProps,
+    Service,
 }
