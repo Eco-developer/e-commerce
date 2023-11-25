@@ -63,6 +63,9 @@ export const ContactForm = () => {
                         type: "submit",
                         processing,
                         disabled: isDerty,
+                        md: 5,
+                        lg: 4,
+                        xl: 4
                     },
                 ]}
             />
