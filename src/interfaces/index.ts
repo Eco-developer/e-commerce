@@ -24,6 +24,10 @@ import {
     Statistic,
     StatisticsGridProps,
 } from "./StatisticsGridProps";
+import {
+    TeamGridProps,
+    Member,
+} from "./TeamGridProps";
 
 export type {
     InputStandardProps,
@@ -46,4 +50,6 @@ export type {
     FormProps,
     Statistic,
     StatisticsGridProps,
+    TeamGridProps,
+    Member,
 }
