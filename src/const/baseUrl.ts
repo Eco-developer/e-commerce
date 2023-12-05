@@ -1,1 +1,1 @@
-export const API_TARGET = "https://target1.p.rapidapi.com"
+export const API_TARGET = process.env.API_TARGET
