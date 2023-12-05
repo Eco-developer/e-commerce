@@ -13,7 +13,7 @@ export const Footer = () => (
                     className={styles.footer__menu__container}
                 >
                     {menu.map((item: string)=> (
-                        <p>
+                        <p key={item}>
                             {item}
                         </p>
                     ))}
