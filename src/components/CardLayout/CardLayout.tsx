@@ -39,7 +39,7 @@ export const CardLayout: React.FC<CardLayoutProps> = ({
             {link ? (
                 <Stack padding={2}>
                     <p>
-                        {link.sideText} <Link style={{color: "#FF6633"}} href={link.to}>{link.text}</Link>.
+                        {link.sideText} <Link style={{color: "#DB4444"}} href={link.to}>{link.text}</Link>.
                     </p>
                 </Stack>
                 )

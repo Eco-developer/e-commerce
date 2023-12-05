@@ -1,7 +1,7 @@
 import { ContactInfo } from "@/containers/ContactInfo/ContactInfo";
 import { ContactForm } from "@/containers/ContactForm/ContactForm";
-import styles from "./page.module.css";
 import { infoItems } from "@/const/infoItems";
+import styles from "./page.module.css";
 
 export default function Contact() {
     return (
