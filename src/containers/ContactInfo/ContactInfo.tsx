@@ -1,10 +1,14 @@
 
 import { Typography } from '@mui/material';
 import styles from "./ContactInfo.module.css";
+import {
+    infoItem,
+    ContactInfoProps,
+} from "@/interfaces"
 
-export const ContactInfo: React.FC<any> = ({infoItems=[]}) => (
+export const ContactInfo: React.FC<ContactInfoProps> = ({infoItems=[]}) => (
     <div className={styles.contact__info__container}>
-        {infoItems.map((infoItem:any) => (
+        {infoItems.map((infoItem:infoItem) => (
             <div 
                 key={infoItem.title}
                 className={styles.contact__info__item}

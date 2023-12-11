@@ -1,7 +1,7 @@
 import { InputStandardProps } from "./InputStandardProps";
 import { SelectInputProps } from "./SelectInputProps";
 import { option as selectOption} from "./SelectInputProps";
-import { TextFieldProps } from "./TextField";
+import { TextFieldProps } from "./TextFieldProps";
 import { PasswordInputProps } from "./PasswordInputProps"; 
 import { CheckboxInputProps } from "./CheckboxInputProps";
 import { InputConstructorProps } from "./InputConstructorProps"; 
@@ -32,6 +32,18 @@ import {
     ServicesGridProps,
     Service,
 } from "./ServicesGridProps";
+import {
+    infoItem,
+    ContactInfoProps,
+} from "./ContactInfoProps";
+import {
+    navMenuItem,
+    NavMenuProps,
+} from "./NavMenuProps";
+import {
+    DropdownMenuProps,
+    menuItem,
+} from "./DropdownMenuProps";
 
 export type {
     InputStandardProps,
@@ -58,4 +70,10 @@ export type {
     Member,
     ServicesGridProps,
     Service,
+    ContactInfoProps,
+    infoItem,
+    NavMenuProps,
+    navMenuItem,
+    DropdownMenuProps,
+    menuItem,
 }
