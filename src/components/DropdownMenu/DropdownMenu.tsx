@@ -1,10 +1,20 @@
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { Menu, MenuProps } from '@mui/material';
-import { MouseEvent, useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import Link from 'next/link';
+import { 
+    Menu, 
+    MenuProps 
+} from '@mui/material';
+import { 
+    MouseEvent, 
+    useState 
+} from 'react';
+import { styled } from '@mui/material/styles';
+import { 
+    DropdownMenuProps, 
+    menuItem 
+} from '@/interfaces';
 
 const StyledMenu = styled((props: MenuProps) => (
     <Menu
@@ -25,12 +35,14 @@ const StyledMenu = styled((props: MenuProps) => (
         }
       },
     },
-  }));
+}));
 
-export const DropdownMenu: React.FC<any> = ({
+
+
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({
     menuItems,
     renderButton
-    }) => {
+}) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -39,53 +51,53 @@ export const DropdownMenu: React.FC<any> = ({
     const handleClose = () => {
         setAnchorEl(null);
     };
-  return (
-    <>
-        {renderButton({
-            "aria-controls": open ? 'basic-menu' : undefined,
-            "aria-haspopup":"true",
-            "aria-expanded": open ? 'true' : undefined,
-            onClick: handleClick,
-        })}
-        <StyledMenu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-            'aria-labelledby': 'basic-button',
-            }}
-        >
-            {   
-                menuItems.map((item:any) => {
-                    if (item.link) {
-                        return (
-                            <Link key={item.text} href={item.link}>
-                                <MenuItem>
+    return (
+        <>
+            {renderButton({
+                "aria-controls": open ? 'basic-menu' : undefined,
+                "aria-haspopup":"true",
+                "aria-expanded": open ? 'true' : undefined,
+                onClick: handleClick,
+            })}
+            <StyledMenu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                'aria-labelledby': 'basic-button',
+                }}
+            >
+                {   
+                    menuItems.map((item:menuItem) => {
+                        if (item.link) {
+                            return (
+                                <Link key={item.text} href={item.link}>
+                                    <MenuItem>
+                                            {item.Icon ? 
+                                                <ListItemIcon>
+                                                    <item.Icon fontSize="small" />
+                                                </ListItemIcon>
+                                            : null}
+                                            <ListItemText>{item.text}</ListItemText>
+                                    </MenuItem>
+                                </Link>
+                            )
+                        } else {
+                            return (
+                                <MenuItem key={item.text} onClick={item.onClick}>
                                         {item.Icon ? 
                                             <ListItemIcon>
-                                                <item.Icon fontSize="small" />
+                                                <item.Icon fontSize="small"/>
                                             </ListItemIcon>
                                         : null}
                                         <ListItemText>{item.text}</ListItemText>
                                 </MenuItem>
-                            </Link>
-                        )
-                    } else {
-                        return (
-                            <MenuItem key={item.text} onClick={item.onClick}>
-                                    {item.Icon ? 
-                                        <ListItemIcon>
-                                            <item.Icon fontSize="small"/>
-                                        </ListItemIcon>
-                                    : null}
-                                    <ListItemText>{item.text}</ListItemText>
-                            </MenuItem>
-                        )
-                    }
-                })
-            }
-        </StyledMenu>
-    </>
-  );
+                            )
+                        }
+                    })
+                }
+            </StyledMenu>
+        </>
+    );
 }
