@@ -2,8 +2,12 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import { useState } from "react";
 import styles from "./NavMenu.module.css";
+import { 
+    NavMenuProps,
+    navMenuItem,
+} from "@/interfaces";
 
-export const NavMenu: React.FC<any> = ({navMenuLinks=[]}) => {
+export const NavMenu: React.FC<NavMenuProps> = ({navMenuLinks=[]}) => {
     const pathname = usePathname();
     const [checked, setChecked] = useState<boolean>(false);
     const onChange = () => {
@@ -26,14 +30,14 @@ export const NavMenu: React.FC<any> = ({navMenuLinks=[]}) => {
                     <span className={`${styles.line} ${styles.hamburger__line__three}`}></span>
                 </div>
                 <ul className={styles.menu__items}>
-                    {navMenuLinks.map((item: any) => (
-                        <li key={item.text}>
+                    {navMenuLinks.map((navMenuItem: navMenuItem) => (
+                        <li key={navMenuItem.text}>
                             <Link 
-                                href={item.to} 
-                                className={`${pathname === item.to ? styles.active__item : ""}`} 
+                                href={navMenuItem.to} 
+                                className={`${pathname === navMenuItem.to ? styles.active__item : ""}`} 
                                 onClick={onChange}
                             >
-                                {item.text}
+                                {navMenuItem.text}
                             </Link>                            
                         </li>
                     ))}

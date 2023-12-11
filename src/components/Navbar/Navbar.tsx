@@ -17,21 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 import styles from "./Navbar.module.css";
 import { NavMenu } from "../NavMenu/NavMenu";
-
-const navMenuLinks = [
-    {
-        text: "Home",
-        to: "/",
-    },
-    {
-        text: "Contact",
-        to: "/contact",
-    },
-    {
-        text: "About",
-        to: "/about",
-    },
-]
+import { navMenuLinks } from "@/const/navMenuLinks";
 
 export const Navbar = () => {
     const { push } = useRouter();
